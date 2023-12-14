@@ -29,4 +29,26 @@ public class ProfHandler extends AbstractHandler {
     public Cursor query(String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         return database.query("Prof", projection, selection, selectionArgs, null, null, sortOrder);
     }
+
+    public Cursor getClassesByProf(String nip) {
+        String query = "SELECT DISTINCT Classe.* " +
+                "FROM Classe " +
+                "JOIN ClasseMatiere ON ClasseMatiere.classe_ID = Classe.classe_ID " +
+                "JOIN Matiere ON Matiere.matiere_ID = ClasseMatiere.matiere_ID " +
+                "WHERE Matiere.NIP = ?";
+
+        String[] selectionArgs = {nip};
+
+        return database.rawQuery(query, selectionArgs);
+    }
+
+    public Cursor getMatieresByProf(String nip) {
+        String query = "SELECT Matiere.* " +
+                "FROM Matiere " +
+                "WHERE Matiere.nip_prof = ?";
+
+        String[] selectionArgs = {nip};
+
+        return database.rawQuery(query, selectionArgs);
+    }
 }
