@@ -1,7 +1,12 @@
 package com.example.applicationmobile;
 
 public class Etudiant {
-    private String NIE, nom, prenom, classe_ID, dateNaissance, adresse;
+    private String NIE;
+    private String nom;
+    private String prenom;
+    private String classe_ID;
+    private String dateNaissance;
+    private String adresse;
     public String getNIE () {
         return this.NIE;
     }
