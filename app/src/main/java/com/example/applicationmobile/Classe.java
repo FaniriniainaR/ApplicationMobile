@@ -7,6 +7,6 @@ public class Classe {
     public int nbrEtudiant;
     public List<Etudiant> listeEtudiant;
     public List<Matiere> listeMatiere;
-    private List<Prof> listProf;
+    public List<Prof> listProf;
 
 }
