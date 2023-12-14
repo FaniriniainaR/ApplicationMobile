@@ -1,9 +1,10 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
 public abstract class AbstractHandler {
 
     protected SQLiteDatabase database;

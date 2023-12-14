@@ -1,4 +1,4 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;

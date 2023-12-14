@@ -1,8 +1,10 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.example.applicationmobile.handler.AbstractHandler;
 
 public class ClasseHandler extends AbstractHandler {
 
@@ -25,7 +27,7 @@ public class ClasseHandler extends AbstractHandler {
         return database.delete("Classe", whereClause, whereArgs);
     }
 
-
+    @Override
     public Cursor query(String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         return database.query("Classe", projection, selection, selectionArgs, null, null, sortOrder);
     }

@@ -1,8 +1,10 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.example.applicationmobile.handler.AbstractHandler;
 
 public class MatiereHandler extends AbstractHandler {
 
@@ -30,11 +32,11 @@ public class MatiereHandler extends AbstractHandler {
         return database.query("Matiere", projection, selection, selectionArgs, null, null, sortOrder);
     }
 
-    public Cursor getProfsByMatiere(String matiereLibelle) {
+    public Cursor getProfsByMatiere(int matiere_ID) {
         String query = "SELECT Prof.nom, Prof.prenom FROM Prof " +
                 "JOIN Matiere ON Prof.NIP = Matiere.prof_NIP " +
-                "WHERE Matiere.libelle = ?";
-        String[] selectionArgs = {matiereLibelle};
+                "WHERE Matiere.matiere_ID = ?";
+        String[] selectionArgs = {String.valueOf(matiere_ID)};
         return database.rawQuery(query, selectionArgs);
     }
 

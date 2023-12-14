@@ -1,8 +1,10 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.example.applicationmobile.handler.AbstractHandler;
 
 public class ProfHandler extends AbstractHandler {
 

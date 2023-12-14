@@ -1,10 +1,12 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.handler;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class ClasseMatiereHandler extends AbstractHandler{
+import com.example.applicationmobile.handler.AbstractHandler;
+
+public class ClasseMatiereHandler extends AbstractHandler {
 
     public ClasseMatiereHandler(Context context) {
         super(context);
