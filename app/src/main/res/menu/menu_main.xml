@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+    <item android:id="@+id/etudiant"
+        android:title="\t\t\t\tÉtudiant" />
+    <item android:id="@+id/matiere"
+        android:title="\t\t\t\tMatière" />
+    <item android:id="@+id/classe"
+        android:title="\t\t\t\tClasse" />
+    <item android:id="@+id/prof"
+        android:title="\t\t\t\tProf" />
+</menu>
