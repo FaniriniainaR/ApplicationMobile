@@ -5,6 +5,6 @@ import java.util.List;
 public class Prof {
     public String NIP, nom, prenom;
     public List<Matiere> matieresEnseignees;
-    public List<Classe> classeEnseignees;
+    private List<Classe> classeEnseignees;
 
 }
