@@ -1,13 +1,8 @@
 package com.example.applicationmobile;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -35,13 +30,6 @@ public class DetailsActivity extends AppCompatActivity {
                 setContentView(R.layout.defaults_details);
                 break;
         }
-
-        // Remplissez le ListView avec les données de la base de données
-        ListView listView = (ListView) findViewById(R.id.listView);
-        // Remplacez cette liste par vos données de la base de données
-        List<String> data = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
-        listView.setAdapter(adapter);
     }
 }
 
