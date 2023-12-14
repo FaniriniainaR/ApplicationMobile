@@ -4,12 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-public abstract class AbstractController {
+public abstract class AbstractHandler {
 
-    private SQLiteDatabase database;
+    protected SQLiteDatabase database;
     private DatabaseHelper databaseHelper;
 
-    public AbstractController(Context context) {
+    public AbstractHandler(Context context) {
         databaseHelper = new DatabaseHelper(context);
     }
 
