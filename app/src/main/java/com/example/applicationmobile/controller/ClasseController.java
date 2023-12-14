@@ -34,7 +34,7 @@ public class ClasseController {
     }
 
     public int editer (ContentValues values, String classe_id) {
-        String [] whereArgs = {"classe_id"};
+        String [] whereArgs = {classe_id};
         this.classeHandler.open();
         int id_edite = this.classeHandler.update(values,"classe_ID",whereArgs);
         this.classeHandler.close();
