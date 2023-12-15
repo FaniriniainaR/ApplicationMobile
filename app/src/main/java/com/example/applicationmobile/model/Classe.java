@@ -7,4 +7,9 @@ public class Classe {
     public String filiere;
     public int nbrEtudiant;
 
+    public String getClasseFilier() {
+        return this.filiere;
+
+    }
+
 }

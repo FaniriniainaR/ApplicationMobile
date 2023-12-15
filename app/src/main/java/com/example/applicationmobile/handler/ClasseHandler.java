@@ -3,6 +3,7 @@ package com.example.applicationmobile.handler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.applicationmobile.handler.AbstractHandler;
 
@@ -20,6 +21,10 @@ public class ClasseHandler extends AbstractHandler {
     @Override
     public int update(ContentValues values, String whereClause, String[] whereArgs) {
         return database.update("Classe", values, whereClause, whereArgs);
+    }
+
+    public SQLiteDatabase getReadableDatabase() {
+        return this.getReadableDatabase();
     }
 
     @Override

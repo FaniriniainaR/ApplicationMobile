@@ -12,24 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationMobile"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".Vue.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".DetailsActivity"
+        <activity
+            android:name=".Vue.DetailsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <activity
+            android:name=".AddProfessorActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

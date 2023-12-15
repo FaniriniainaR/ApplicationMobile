@@ -1,8 +1,10 @@
-package com.example.applicationmobile;
+package com.example.applicationmobile.Vue;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.applicationmobile.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -15,19 +17,19 @@ public class DetailsActivity extends AppCompatActivity {
         // Utilisez la position pour déterminer quel fichier XML charger
         switch(position) {
             case 0:
-                setContentView(R.layout.matiers_details);
+                setContentView(R.layout.activity_matiers);
                 break;
             case 1:
-                setContentView(R.layout.etudiant_details);
+                setContentView(R.layout.activity_etudiant);
                 break;
             case 2:
-                setContentView(R.layout.classe_details);
+                setContentView(R.layout.activity_classe);
                 break;
             case 3:
-                setContentView(R.layout.prof_details);
+                setContentView(R.layout.activity_prof);
                 break;
             default:
-                setContentView(R.layout.defaults_details);
+                setContentView(R.layout.activity_defaults);
                 break;
         }
     }

@@ -1,0 +1,39 @@
+<!-- Place this XML file in the res/layout/ folder -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddProfessorActivity">
+
+    <EditText
+        android:id="@+id/editTextNIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NIP"
+        android:minHeight="48dp" />
+
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextPrenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prénom"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"/>
+</LinearLayout>

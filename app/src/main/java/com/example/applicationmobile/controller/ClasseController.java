@@ -1,7 +1,9 @@
 package com.example.applicationmobile.controller;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.applicationmobile.handler.ClasseHandler;
 import com.example.applicationmobile.handler.ClasseMatiereHandler;
@@ -29,6 +31,57 @@ public class ClasseController {
         this.classeHandler.close();
         return nbrLigneAjouter;
     }
+    public long addClasse(String filiere, int nbrEtudiant) {
+        ContentValues values = new ContentValues();
+        values.put("classeFiliere", filiere);
+        values.put("nbrEtudiant", nbrEtudiant);
+
+        return this.ajouter(values);
+    }
+
+    public boolean verifierInsertion(String filiere, int nbrEtudiant) {
+        this.classeHandler.open();
+
+        // Récupérer la classe que vous venez d'insérer
+        Cursor cursor = this.classeHandler.getReadableDatabase().rawQuery("SELECT * FROM Classe WHERE classeFiliere = ? AND nbrEtudiant = ?", new String[] {filiere, String.valueOf(nbrEtudiant)});
+
+        // Vérifier si la requête a renvoyé des résultats
+        if (cursor.moveToFirst()) {
+            // Si la requête a renvoyé des résultats, cela signifie que les données ont été correctement insérées
+            cursor.close();
+            this.classeHandler.close();
+            System.out.print("Mandeha");
+            return true;
+        } else {
+            // Si la requête n'a pas renvoyé de résultats, cela signifie que les données n'ont pas été correctement insérées
+            cursor.close();
+            this.classeHandler.close();
+            System.out.print("Tsy Mandeha");
+            return false;
+        }
+    }
+
+
+    @SuppressLint("Range")
+    public void printClasses() {
+        this.classeHandler.open();
+
+        String selectQuery = "SELECT 1;";
+        Cursor cursor = this.classeHandler.getReadableDatabase().rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Log.d("Classe", "Database connection successful");
+        } else {
+            Log.d("Classe", "Database connection failed");
+        }
+
+        cursor.close();
+        this.classeHandler.close();
+    }
+
+
+
+
     //suppression à partir d'un id, tsy type int le id fa string
     public int supprimer (String classe_ID) {
         String [] whereArgs = {classe_ID};
