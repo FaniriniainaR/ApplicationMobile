@@ -33,7 +33,7 @@ public class ClasseHandler extends AbstractHandler {
     }
 
     public Cursor getMatieresByClasse(String classeID) {
-        String query = "SELECT Matiere.libelle FROM Matiere " +
+        String query = "SELECT Matiere.* FROM Matiere " +
                 "JOIN MatiereClasse ON Matiere.matiere_ID = MatiereClasse.matiere_ID " +
                 "JOIN Classe ON MatiereClasse.classe_ID = Classe.classe_ID " +
                 "WHERE Classe.classe_ID = ?";
@@ -42,7 +42,7 @@ public class ClasseHandler extends AbstractHandler {
     }
 
     public Cursor getEtudiantsByClasse(String classeID) {
-        String query = "SELECT Etudiant.NIE, Etudiant.nom, Etudiant.prenom FROM Etudiant " +
+        String query = "SELECT Etudiant.* FROM Etudiant " +
                 "JOIN Classe ON Etudiant.classe_ID = Classe.classe_ID " +
                 "WHERE Classe.classe_ID = ?";
         String[] selectionArgs = {classeID};
@@ -50,11 +50,11 @@ public class ClasseHandler extends AbstractHandler {
     }
 
     public Cursor getProfsByClasse(String classeID) {
-        String query = "SELECT DISTINCT Prof.NIP, Prof.nom, Prof.prenom FROM Prof " +
+        String query = "SELECT DISTINCT Prof.* FROM Prof " +
                 "JOIN Matiere ON Prof.NIP = Matiere.NIP " +
                 "JOIN ClasseMatiere ON Matiere.matiere_ID = ClasseMatiere.matiere_ID " +
                 "JOIN Classe ON ClasseMatiere.classe_ID = Classe.classe_ID " +
-                "WHERE Classe.classe_ID = ?";
+                "WHERE Classe.classe_ID = classeID";
         String[] selectionArgs = {classeID};
         return database.rawQuery(query, selectionArgs);
     }

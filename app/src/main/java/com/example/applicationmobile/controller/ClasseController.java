@@ -4,41 +4,71 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.applicationmobile.handler.ClasseHandler;
+import com.example.applicationmobile.handler.ClasseMatiereHandler;
 import com.example.applicationmobile.model.Etudiant;
 import com.example.applicationmobile.model.Matiere;
 import com.example.applicationmobile.model.Classe;
 import com.example.applicationmobile.model.Prof;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClasseController {
     private ClasseHandler classeHandler;
+    private ClasseMatiereHandler classeMatiereHandler;
     public ClasseController (Context context) {
+
         this.classeHandler = new ClasseHandler(context);
+        this.classeMatiereHandler = new ClasseMatiereHandler(context);
     }
 
     //ajouter une nouvelle ligne dans la table classe
     public long ajouter (ContentValues values) {
         this.classeHandler.open();
-        long id_new = this.classeHandler.insert(values);
+        long nbrLigneAjouter = this.classeHandler.insert(values);
         this.classeHandler.close();
-        return id_new;
+        return nbrLigneAjouter;
     }
     //suppression à partir d'un id, tsy type int le id fa string
-    public int supprimer (String classe_id) {
-        String [] whereArgs = {classe_id};
+    public int supprimer (String classe_ID) {
+        String [] whereArgs = {classe_ID};
         this.classeHandler.open();
-        int id_supprime = this.classeHandler.delete("classe_ID",whereArgs);
+        int nbrLigneSupprime = this.classeHandler.delete("classe_ID",whereArgs);
         this.classeHandler.close();
-        return id_supprime;
+        return nbrLigneSupprime;
     }
 
     public int editer (ContentValues values, String classe_id) {
         String [] whereArgs = {classe_id};
         this.classeHandler.open();
-        int id_edite = this.classeHandler.update(values,"classe_ID",whereArgs);
+        int nbrLigneEdite = this.classeHandler.update(values,"classe_ID",whereArgs);
         this.classeHandler.close();
-        return id_edite;
+        return nbrLigneEdite;
+    }
+
+
+    public long ajouterMatiere (ContentValues values) {
+        this.classeMatiereHandler.open();
+        long nbrLigneAjouter = this.classeMatiereHandler.insert(values);
+        this.classeMatiereHandler.close();
+        return nbrLigneAjouter;
+    }
+    //suppression à partir d'un id, tsy type int le id fa string
+    public int supprimerMatiere (String classe_ID, int matiere_ID) {
+        String [] whereArgs = {classe_ID, String.valueOf(matiere_ID)};
+        String whereClause = "classe_ID = ? AND matiere_ID = ?";
+        this.classeMatiereHandler.open();
+        int nbrLigneSupprime = this.classeMatiereHandler.delete(whereClause, whereArgs);
+        this.classeMatiereHandler.close();
+        return nbrLigneSupprime;
+    }
+
+    public int editerMatiere (ContentValues values, String classe_ID) {
+        String [] whereArgs = {classe_ID};
+        this.classeHandler.open();
+        int nbrLigneEdite = this.classeHandler.update(values,"classe_ID",whereArgs);
+        this.classeHandler.close();
+        return nbrLigneEdite;
     }
 
     public List<Classe> getClasses () {
@@ -121,7 +151,7 @@ public class ClasseController {
 
     public List<Prof> getProfs (String classe_ID) {
         this.classeHandler.open();
-        Cursor results = this.classeHandler.getMatieresByClasse(classe_ID);
+        Cursor results = this.classeHandler.getProfsByClasse(classe_ID);
         List<Prof> profs = new ArrayList<>();
 
         if (results != null && results.moveToFirst()) {

@@ -33,19 +33,19 @@ public class MatiereHandler extends AbstractHandler {
     }
 
     public Cursor getProfsByMatiere(int matiere_ID) {
-        String query = "SELECT Prof.nom, Prof.prenom FROM Prof " +
-                "JOIN Matiere ON Prof.NIP = Matiere.prof_NIP " +
-                "WHERE Matiere.matiere_ID = ?";
+        String query = "SELECT Prof.* " +
+                "FROM Prof " +
+                "WHERE Prof.NIP = ?";
         String[] selectionArgs = {String.valueOf(matiere_ID)};
         return database.rawQuery(query, selectionArgs);
     }
 
-    public Cursor getClassesByMatiere(String matiereLibelle) {
+    public Cursor getClassesByMatiere(int matiere_ID) {
         String query = "SELECT Classe.classe_ID, Classe.classeFiliere FROM Classe " +
-                "JOIN MatiereClasse ON Classe.classe_ID = MatiereClasse.classe_ID " +
-                "JOIN Matiere ON MatiereClasse.matiere_ID = Matiere.matiere_ID " +
-                "WHERE Matiere.libelle = ?";
-        String[] selectionArgs = {matiereLibelle};
+                "JOIN ClasseMatiere ON Classe.classe_ID = ClasseMatiere.classe_ID " +
+                "JOIN Matiere ON ClasseMatiere.matiere_ID = Matiere.matiere_ID " +
+                "WHERE Matiere.matiere_ID = ?";
+        String[] selectionArgs = {String.valueOf(matiere_ID)};
         return database.rawQuery(query, selectionArgs);
     }
 }
