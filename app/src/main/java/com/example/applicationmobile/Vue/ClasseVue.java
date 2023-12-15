@@ -35,14 +35,14 @@ public class ClasseVue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classe);
 
-        // Initialize UI elements
+
        /* editTextFilier = findViewById(R.id.editTextNIP);
         editTextNom = findViewById(R.id.editTextNom);
         editTextPrenom = findViewById(R.id.editTextPrenom);*/
 
         Button addButton = findViewById(R.id.addButton);
 
-        // Initialize ProfController to manage the database
+
         classeController = new ClasseController(this);
         classeController.addClasse("L3IRD", 35);
         classeController.addClasse("L2IRD", 35);
@@ -55,18 +55,18 @@ public class ClasseVue extends AppCompatActivity {
 
         List<Classe> classes = classeController.getClasses();
 
-        // Create a list to hold the filiers
+
         List<String> filiers = new ArrayList<>();
 
-        // Extract the filier from each Classe
+
         for (Classe classe : classes) {
             filiers.add(classe.getClasseFilier());
         }
 
-        // Create an ArrayAdapter using the list of filiers
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filiers);
 
-        // Set the adapter for the ListView
+        
         ListView listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 

@@ -47,13 +47,13 @@ public class ClasseController {
 
         // Vérifier si la requête a renvoyé des résultats
         if (cursor.moveToFirst()) {
-            // Si la requête a renvoyé des résultats, cela signifie que les données ont été correctement insérées
+
             cursor.close();
             this.classeHandler.close();
             System.out.print("Mandeha");
             return true;
         } else {
-            // Si la requête n'a pas renvoyé de résultats, cela signifie que les données n'ont pas été correctement insérées
+
             cursor.close();
             this.classeHandler.close();
             System.out.print("Tsy Mandeha");
