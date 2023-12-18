@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.applicationmobile.handler.DatabaseHelper;
+import com.example.applicationmobile.helper.DatabaseHelper;
 
 public class ProfController {
     private SQLiteDatabase database;

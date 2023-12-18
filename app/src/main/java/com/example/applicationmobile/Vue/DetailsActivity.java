@@ -1,10 +1,12 @@
 package com.example.applicationmobile.Vue;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.applicationmobile.R;
+import com.example.applicationmobile.Vue.Classe.ListeClasse;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -20,10 +22,11 @@ public class DetailsActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_matiers);
                 break;
             case 1:
-                setContentView(R.layout.activity_etudiant);
+                setContentView(R.layout.activity_matiers);
                 break;
             case 2:
-                setContentView(R.layout.activity_classe);
+                Intent intent = new Intent(DetailsActivity.this, ListeClasse.class);
+                startActivity(intent);
                 break;
             case 3:
                 setContentView(R.layout.activity_prof);

@@ -23,9 +23,7 @@ public class ClasseHandler extends AbstractHandler {
         return database.update("Classe", values, whereClause, whereArgs);
     }
 
-    public SQLiteDatabase getReadableDatabase() {
-        return this.getReadableDatabase();
-    }
+
 
     @Override
     public int delete(String whereClause, String[] whereArgs) {

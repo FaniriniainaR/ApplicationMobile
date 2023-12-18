@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.applicationmobile.helper.DatabaseHelper;
+
 public abstract class AbstractHandler {
 
     protected SQLiteDatabase database;

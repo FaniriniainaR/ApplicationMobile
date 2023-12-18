@@ -68,4 +68,33 @@ public class EtudiantController {
         return etudiants;
     }
 
+    public List<Etudiant> getEtudiants (String classe_ID) {
+        this.etudiantHandler.open();
+        String selection = "classe_ID";
+        String [] selectionArgs = {classe_ID};
+        Cursor results = this.etudiantHandler.query(null, selection, selectionArgs, null);
+        List<Etudiant> etudiants = new ArrayList<>();
+
+        if (results != null && results.moveToFirst()) {
+            do {
+                Etudiant etudiant = new Etudiant();
+                // es colonnes sont 0 pour matiere_ID, 1 pour libelle, 2 pour nip_prof, selon l'ordre que l'on a créé les tables
+                etudiant.NIE= results.getString(0);
+                etudiant.nom = results.getString(1);
+                etudiant.prenom = results.getString(2);
+                etudiant.classe_ID = results.getString(3);
+                etudiant.dateNaissance = results.getString(4);
+                etudiant.adresse = results.getString(5);
+
+                etudiants.add(etudiant);
+            } while (results.moveToNext());
+        }
+
+        if (results != null) {
+            results.close();
+        }
+
+        this.etudiantHandler.close();
+        return etudiants;
+    }
 }

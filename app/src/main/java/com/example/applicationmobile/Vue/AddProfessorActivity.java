@@ -18,7 +18,7 @@ public class AddProfessorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_profs);
 
         // Initialize UI elements
-        editTextNIP = findViewById(R.id.editTextNIP);
+        editTextNIP = findViewById(R.id.editTextClasse_ID);
         editTextNom = findViewById(R.id.editTextNom);
         editTextPrenom = findViewById(R.id.editTextPrenom);
 
