@@ -30,24 +30,22 @@ public class ListeClasse extends AppCompatActivity {
         classeController = new ClasseController(this);
         setContentView(R.layout.activity_liste_classe);
         ListView listView = findViewById(R.id.listClasse);
-        updateListView();
+        //updateListView();
         Button addButton = findViewById(R.id.btnAjouter);
-        // Ajouter un écouteur de clic sur la ListView
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        List<Classe> listeClasse = classeController.getClasses();
+        GenericAdapter<Classe> classeAdapter = new GenericAdapter<>(this, R.layout.list_item_classe, listeClasse);
+        classeAdapter.setOnItemClickListener(new GenericAdapter.OnItemClickListener<Classe>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Récupérer l'objet Classe correspondant à l'élément cliqué
-                Classe classeCliquee = (Classe) parent.getItemAtPosition(position);
-
-                // Récupérer l'id de la classe
-                String classeId = classeCliquee.classe_ID;
-
-                // Passer l'id de la classe à l'activité suivante
+            public void onItemClick(Classe item) {
+                // Action à effectuer lorsqu'un élément est cliqué
                 Intent intent = new Intent(ListeClasse.this, ListeEtudiant.class);
-                intent.putExtra("classe_ID", classeId);
+                intent.putExtra("classe_ID", item.classe_ID); // Utilisez la méthode getter appropriée
                 startActivity(intent);
             }
         });
+
+        listView.setAdapter(classeAdapter);
 
 
 

@@ -70,7 +70,7 @@ public class EtudiantController {
 
     public List<Etudiant> getEtudiants (String classe_ID) {
         this.etudiantHandler.open();
-        String selection = "classe_ID";
+        String selection = "classe_ID=?";
         String [] selectionArgs = {classe_ID};
         Cursor results = this.etudiantHandler.query(null, selection, selectionArgs, null);
         List<Etudiant> etudiants = new ArrayList<>();

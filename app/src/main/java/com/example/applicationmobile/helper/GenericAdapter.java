@@ -14,10 +14,18 @@ import java.util.List;
 public class GenericAdapter<T> extends ArrayAdapter<T> {
 
     private int layoutResourceId;
+    private OnItemClickListener<T> onItemClickListener;
 
+    public interface OnItemClickListener<T> {
+        void onItemClick(T item);
+    }
     public GenericAdapter(Context context, int layoutResourceId, List<T> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener<T> listener) {
+        this.onItemClickListener = listener;
     }
 
     @Override
@@ -27,7 +35,6 @@ public class GenericAdapter<T> extends ArrayAdapter<T> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(layoutResourceId, parent, false);
         }
-
         // Vous devez adapter cela en fonction de la structure de vos classes
         if (item instanceof Classe) {
             bindClasseData((Classe) item, convertView);
@@ -38,6 +45,15 @@ public class GenericAdapter<T> extends ArrayAdapter<T> {
         } else if (item instanceof Matiere) {
 
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(item);
+                }
+            }
+        });
 
         return convertView;
     }

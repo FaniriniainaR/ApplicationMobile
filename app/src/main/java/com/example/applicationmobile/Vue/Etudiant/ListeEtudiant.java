@@ -22,8 +22,8 @@ public class ListeEtudiant extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         etudiantController = new EtudiantController(this);
-        Intent intent = getIntent();
-        String classe_ID = intent.getStringExtra("Classe_ID");
+        Intent intent = this.getIntent();
+        String classe_ID = intent.getStringExtra("classe_ID");
         setContentView(R.layout.activity_liste_etudiant);
         updateListView(classe_ID);
     }
